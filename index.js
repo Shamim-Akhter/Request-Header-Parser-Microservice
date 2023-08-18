@@ -14,12 +14,10 @@ app.get('/', function (req, res) {
 app.get('/api/whoami',function(req,res){
     const information = req.headers;
     res.send({
-        "ipaddress":information.origin,
+        "ipaddress":req.ip,
         "language":information['accept-language'],
         "software":information['user-agent']
     });
-
-    console.log(information);
 });
 
 app.listen(process.env.PORT || 8000,function(){
